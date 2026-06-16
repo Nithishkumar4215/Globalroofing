@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import CrystalServiceCard from './components/CrystalServiceCard';
+import StructureBuilder from './components/StructureBuilder/StructureBuilder';
 import CoverFlow3D from './components/CoverFlow3D';
 import { 
   Star, 
@@ -62,6 +63,7 @@ export default function App() {
   const heroRef = useRef<HTMLDivElement>(null);
   const servicesRef = useRef<HTMLDivElement>(null);
   const portfolioRef = useRef<HTMLDivElement>(null);
+  const builderRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
 
@@ -157,6 +159,13 @@ export default function App() {
               Portfolio
             </button>
             <button 
+              onClick={() => scrollToSection(builderRef)} 
+              className="text-sm font-semibold text-slate-600 hover:text-[#1E508C] hover:scale-105 active:scale-95 transition cursor-pointer"
+              id="nav-builder"
+            >
+              3D Builder
+            </button>
+            <button 
               onClick={() => scrollToSection(aboutRef)} 
               className="text-sm font-semibold text-slate-600 hover:text-[#1E508C] hover:scale-105 active:scale-95 transition cursor-pointer"
               id="nav-about"
@@ -219,6 +228,12 @@ export default function App() {
                 className="block w-full text-left py-2.5 px-4 rounded-xl text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-[#1E508C] transition"
               >
                 Portfolio
+              </button>
+              <button 
+                onClick={() => scrollToSection(builderRef)}
+                className="block w-full text-left py-2.5 px-4 rounded-xl text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-[#1E508C] transition"
+              >
+                3D Builder
               </button>
               <button 
                 onClick={() => scrollToSection(aboutRef)}
@@ -578,6 +593,17 @@ export default function App() {
             </AnimatePresence>
           </motion.div>
 
+        </div>
+      </section>
+
+      {/* 3D STRUCTURE BUILDER SECTION */}
+      <section 
+        ref={builderRef}
+        className="py-20 bg-slate-50 border-b border-slate-100 scroll-mt-10"
+        id="structure-builder-section"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <StructureBuilder />
         </div>
       </section>
 
