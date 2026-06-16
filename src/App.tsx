@@ -35,6 +35,8 @@ import {
   FinishedProject
 } from './data';
 
+import heroBgImg from './assets/images/roofing_worker_hero_1781597952285.jpg';
+
 export default function App() {
   // Mobile navigation state
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -254,7 +256,7 @@ export default function App() {
         {/* Background Image with Dark Linear Gradient Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/src/assets/images/roofing_worker_hero_1781597952285.jpg"
+            src={heroBgImg}
             alt="Global Roofing premium construction sheet fixing"
             className="w-full h-full object-cover object-center opacity-85 scale-102 filter brightness-[0.7] contrast-[1.05]"
             referrerPolicy="no-referrer"
@@ -527,7 +529,7 @@ export default function App() {
           {/* Animated filtered items */}
           <motion.div 
             layout
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="responsive-grid"
             id="portfolio-items"
           >
             <AnimatePresence mode="popLayout">

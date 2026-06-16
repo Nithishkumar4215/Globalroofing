@@ -1,3 +1,14 @@
+import sheetFixingImg from './assets/images/sheet_fixing_card_1781597969155.jpg';
+import metalSheetsImg from './assets/images/metal_sheets_card_1781597984941.jpg';
+import cementSheetsImg from './assets/images/cement_sheets_card_1781598001369.jpg';
+import polycarbonateImg from './assets/images/polycarbonate_sheets_card_1781599351353.jpg';
+
+import industrialShedImg from './assets/images/industrial_shed_1781598685021.jpg';
+import factoryShedImg from './assets/images/factory_shed_1781598700545.jpg';
+import mangaloreRoofImg from './assets/images/mangalore_roof_1781598715407.jpg';
+import charcoalRoofImg from './assets/images/charcoal_roof_1781598729858.jpg';
+import structuralRoofImg from './assets/images/structural_roof_1781598745785.jpg';
+
 export interface LeadershipMember {
   name: string;
   role: string;
@@ -39,14 +50,14 @@ export const SERVICE_CARDS: ServiceCardData[] = [
   {
     title: "Sheet Fixing",
     description: "Expert installation of all types of roofing sheets with structural precision.",
-    image: "/src/assets/images/sheet_fixing_card_1781597969155.jpg",
+    image: sheetFixingImg,
     iconType: 'grid',
     bgColorClass: 'bg-pastel-green'
   },
   {
     title: "Metal Sheets",
     description: "High-durability color-coated metal roofing sheets for industrial and residential use.",
-    image: "/src/assets/images/metal_sheets_card_1781597984941.jpg",
+    image: metalSheetsImg,
     iconType: 'layers',
     textColorClass: "text-[#1E508C]",
     bgColorClass: 'bg-pastel-orange'
@@ -54,14 +65,14 @@ export const SERVICE_CARDS: ServiceCardData[] = [
   {
     title: "Cement Sheets",
     description: "Traditional and heavy-duty cement roofing sheets for long-lasting performance.",
-    image: "/src/assets/images/cement_sheets_card_1781598001369.jpg",
+    image: cementSheetsImg,
     iconType: 'box',
     bgColorClass: 'bg-pastel-blue'
   },
   {
     title: "Polycarbonate Sheets",
     description: "Modern, translucent, and highly durable weather-resistant canopies and skylights.",
-    image: "/src/assets/images/polycarbonate_sheets_card_1781599351353.jpg",
+    image: polycarbonateImg,
     iconType: 'sun',
     textColorClass: "text-[#F37021]",
     bgColorClass: 'bg-pastel-yellow'
@@ -105,35 +116,35 @@ export const PORTFOLIO_DATA: PortfolioItem[] = [
     title: "Industrial Shed Fabrication Services",
     category: "Metal",
     location: "Erode Industrial Zone",
-    image: "/src/assets/images/industrial_shed_1781598685021.jpg"
+    image: industrialShedImg
   },
   {
     id: "p2",
     title: "Modular Factory Sheds Fabrication Services",
     category: "Metal",
     location: "Sipcot, Perundurai",
-    image: "/src/assets/images/factory_shed_1781598700545.jpg"
+    image: factoryShedImg
   },
   {
     id: "p3",
     title: "Metal Roofing Mangalore Tile Cooling Shed Work",
     category: "Cement",
     location: "Erode Town Area",
-    image: "/src/assets/images/mangalore_roof_1781598715407.jpg"
+    image: mangaloreRoofImg
   },
   {
     id: "p4",
     title: "Roofing Works (Dark Wave Ceramic Profile)",
     category: "Cement",
     location: "Residential Complex, Erode",
-    image: "/src/assets/images/charcoal_roof_1781598729858.jpg"
+    image: charcoalRoofImg
   },
   {
     id: "p5",
     title: "Roof Structural Fabrication (Framework Built)",
     category: "Polycarbonate",
     location: "Gopi Goundampalayam",
-    image: "/src/assets/images/structural_roof_1781598745785.jpg"
+    image: structuralRoofImg
   }
 ];
 
@@ -148,27 +159,27 @@ export const FINISHED_PROJECTS: FinishedProject[] = [
   {
     id: "fp1",
     title: "Industrial Shed Fabrication Services",
-    image: "/src/assets/images/industrial_shed_1781598685021.jpg"
+    image: industrialShedImg
   },
   {
     id: "fp2",
     title: "Modular Factory Sheds Fabrication Services",
-    image: "/src/assets/images/factory_shed_1781598700545.jpg",
+    image: factoryShedImg,
     hasQuoteButton: true
   },
   {
     id: "fp3",
     title: "Metal Roofing Mangalore Tile Cooling Shed Work",
-    image: "/src/assets/images/mangalore_roof_1781598715407.jpg"
+    image: mangaloreRoofImg
   },
   {
     id: "fp4",
     title: "Roofing Works",
-    image: "/src/assets/images/charcoal_roof_1781598729858.jpg"
+    image: charcoalRoofImg
   },
   {
     id: "fp5",
     title: "Roof Structural Fabrication",
-    image: "/src/assets/images/structural_roof_1781598745785.jpg"
+    image: structuralRoofImg
   }
 ];
