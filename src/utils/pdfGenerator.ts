@@ -51,8 +51,8 @@ export function generateDesignReport(data: PDFData) {
   doc.setFontSize(9);
   doc.setTextColor(textColor[0], textColor[1], textColor[2]);
   doc.text('Address: Chennai, Tamil Nadu, India', 52, 29);
-  doc.text('Mobile: +91 XXXXXXXXXX | WhatsApp: +91 XXXXXXXXXX', 52, 34);
-  doc.text('Email: info@globalroofing.com | Web: www.globalroofing.com', 52, 39);
+  doc.text('Mobile: +91 6381421900 | WhatsApp: +91 6381421900', 52, 34);
+  doc.text('Email: venkatidsc@gmail.com | Web: www.globalroofing.com', 52, 39);
 
   // Decorative border below Header
   doc.setDrawColor(secondaryColor[0], secondaryColor[1], secondaryColor[2]);
@@ -134,11 +134,11 @@ export function generateDesignReport(data: PDFData) {
   doc.setTextColor(textColor[0], textColor[1], textColor[2]);
   
   const profileText = 
-    'Global Roofing is a premium engineering and steel fabrication service provider based in Tamil Nadu. We specialize in high-quality structural framing, roof sheet fixing, and canopy installations.';
+    'Company Profile: Global Roofing is a premier structural engineering and metal fabrication contractor in Tamil Nadu, dedicated to delivering robust industrial roofing solutions. We specialize in advanced structural framing, industrial sheet fixing, and custom canopy designs engineered for optimal durability.';
   const servicesText = 
-    'Services: Industrial shed fabrication, modular factory sheds, Mangalore cooling tile systems, polycarbonate skylights, and custom sheet profile bending.';
+    'Core Services: Industrial & warehouse shed fabrication, modular factory layout engineering, high-performance Mangalore tile cooling roof systems, weather-resistant polycarbonate skylights, and precision profile bending.';
   const qaText = 
-    'Quality Statement: All fabrication works comply with certified safety standards, utilising premium weather-proof materials designed for long-lasting structural integrity.';
+    'Quality Assurance: We construct with structural-grade materials and adhere strictly to certified safety protocols, ensuring weather resilience, wind-load capacity, and lifetime structural integrity.';
 
   doc.text(profileText, 15, 237, { maxWidth: 180 });
   doc.text(servicesText, 15, 243, { maxWidth: 180 });
@@ -157,7 +157,7 @@ export function generateDesignReport(data: PDFData) {
   doc.setFont('Helvetica', 'normal');
   doc.setFontSize(8);
   doc.setTextColor(textColor[0], textColor[1], textColor[2]);
-  doc.text('Mobile: +91 XXXXXXXXXX | WhatsApp: +91 XXXXXXXXXX | Email: info@globalroofing.com | Web: www.globalroofing.com', 105, 278, { align: 'center' });
+  doc.text('Mobile: +91 6381421900 | WhatsApp: +91 6381421900 | Email: venkatidsc@gmail.com | Web: www.globalroofing.com', 105, 278, { align: 'center' });
 
   // Save the PDF
   const dateStr = new Date().toISOString().split('T')[0];
