@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
+import { generateDesignReport } from '../../utils/pdfGenerator';
 import Structure3D from './Structure3D';
 import { 
   Ruler, 
@@ -35,6 +36,58 @@ export default function StructureBuilder() {
 
   // Current active configuration sent to the 3D model
   const [activeConfig, setActiveConfig] = useState({ ...inputs });
+
+  const canvasContainerRef = useRef<HTMLDivElement>(null);
+  const [isDownloading, setIsDownloading] = useState(false);
+  const [downloadSuccess, setDownloadSuccess] = useState(false);
+
+  const handleDownloadPDF = () => {
+    setIsDownloading(true);
+    setDownloadSuccess(false);
+
+    // Provide a brief delay to ensure WebGL frame rendering is finalized
+    setTimeout(() => {
+      try {
+        const canvas = canvasContainerRef.current?.querySelector('canvas');
+        if (!canvas) {
+          alert('Error: 3D canvas viewport not found.');
+          setIsDownloading(false);
+          return;
+        }
+
+        // Capture WebGL frame (works since preserveDrawingBuffer is enabled)
+        const screenshotUrl = canvas.toDataURL('image/png');
+
+        // Map hex code back to plain English name
+        const activeColorObj = ROOF_COLORS.find(c => c.hex === activeConfig.roofColor);
+        const colorName = activeColorObj ? activeColorObj.name : activeConfig.roofColor;
+
+        generateDesignReport({
+          length: activeConfig.length,
+          width: activeConfig.width,
+          height: activeConfig.height,
+          structureType: activeConfig.structureType,
+          roofType: activeConfig.roofType,
+          roofColor: colorName,
+          totalArea,
+          roofingArea,
+          columnsCount: totalColumns,
+          screenshotUrl,
+        });
+
+        setDownloadSuccess(true);
+        alert('PDF downloaded successfully.');
+
+        // Reset success state after a delay
+        setTimeout(() => setDownloadSuccess(false), 5000);
+      } catch (err) {
+        console.error('Error generating PDF report:', err);
+        alert('Failed to generate PDF design report.');
+      } finally {
+        setIsDownloading(false);
+      }
+    }, 500);
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -246,15 +299,37 @@ export default function StructureBuilder() {
             </div>
           </div>
 
+          {/* PDF Export Action Card */}
+          <div className="bg-slate-950/40 border border-slate-800/80 p-5 rounded-2xl space-y-3">
+            <h4 className="text-[11px] font-black text-slate-400 tracking-wider uppercase border-b border-slate-800/80 pb-2 flex items-center gap-1.5">
+              <Maximize2 className="w-3.5 h-3.5 text-[#FAB319]" />
+              <span>Export Options</span>
+            </h4>
+            <button
+              type="button"
+              onClick={handleDownloadPDF}
+              disabled={isDownloading}
+              className="w-full bg-[#FAB319] hover:bg-amber-500 text-slate-950 py-3 rounded-xl font-black uppercase text-xs tracking-wider transition-all duration-150 flex items-center justify-center gap-2 hover:shadow-lg active:scale-95 disabled:opacity-50"
+            >
+              {isDownloading ? 'Generating PDF...' : 'Download Design Report'}
+            </button>
+            {downloadSuccess && (
+              <div className="text-[10px] text-emerald-400 font-bold text-center mt-1.5">
+                PDF downloaded successfully.
+              </div>
+            )}
+          </div>
+
         </div>
 
         {/* RIGHT COLUMN: 3D Canvas Viewport */}
         <div className="flex-1 min-h-[400px] sm:min-h-[500px] lg:min-h-[620px] bg-slate-950 border border-slate-800 rounded-3xl relative overflow-hidden flex flex-col justify-end">
           
           {/* 3D Canvas rendering */}
-          <div className="absolute inset-0 z-0">
+          <div ref={canvasContainerRef} className="absolute inset-0 z-0">
             <Canvas
               shadows
+              gl={{ preserveDrawingBuffer: true }}
               camera={{ position: [activeConfig.length * 0.4, activeConfig.height * 0.5, activeConfig.width * 0.5], fov: 45 }}
             >
               <color attach="background" args={['#090d16']} />
